@@ -4,14 +4,14 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
 
-# Step 1: Load the California Housing dataset
+
 data = fetch_california_housing(as_frame=True)
 housing_df = data.frame
 
-# Step 2: Create histograms for numerical features
+
 numerical_features = housing_df.select_dtypes(include=[np.number]).columns
 
-# Plot histograms
+
 plt.figure(figsize=(15, 10))
 for i, feature in enumerate(numerical_features):
     plt.subplot(3, 3, i + 1)
@@ -20,7 +20,7 @@ for i, feature in enumerate(numerical_features):
 plt.tight_layout()
 plt.show()
 
-# Step 3: Generate box plots for numerical features
+
 plt.figure(figsize=(15, 10))
 for i, feature in enumerate(numerical_features):
     plt.subplot(3, 3, i + 1)
@@ -29,7 +29,7 @@ for i, feature in enumerate(numerical_features):
 plt.tight_layout()
 plt.show()
 
-# Step 4: Identify outliers using the IQR method
+
 print("Outliers Detection:")
 outliers_summary = {}
 for feature in numerical_features:
@@ -42,6 +42,6 @@ for feature in numerical_features:
     outliers_summary[feature] = len(outliers)
     print(f"{feature}: {len(outliers)} outliers")
 
-# Optional: Print a summary of the dataset
+
 print("\nDataset Summary:")
 print(housing_df.describe())
